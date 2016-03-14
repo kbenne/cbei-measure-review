@@ -1,0 +1,133 @@
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>system_with_electric_heating_coil</name>
+  <uid>ffdf05ce-34c2-498e-9ca8-4ef8fe3a9af5</uid>
+  <version_id>b4ea4639-984a-474d-9a50-0b23b4549a12</version_id>
+  <xml_checksum>4435983D</xml_checksum>
+  <class_name>SystemWithElectricHeatingCoil</class_name>
+  <display_name>Add Electric Heating Coil</display_name>
+  <description>Measure replaces existing heating elements with eletric resistance heating coils. A VAV system is also configured to be used with the electric heating system. The building system can be simulated with or without plenums. HVAC schedules can be applied from the original model or adopted from built-in modules which reflect the HVAC recommendations of the 50% Small and Medium Office from AEDG. Demand controlled ventilation (DCV) is optional for outdoor air control.  </description>
+  <modeler_description>This measure will remove the existing heating loops and add electric heating coils in the air loops. This measure was based on the measure of "AEDG Office HVAC VAV with DX Cooling" developed by NREL and posted online in the Building Component Library of NREL, https://bcl.nrel.gov/node/39808. The Ruby codes of "measure.rb" and "OsLib_HVAC.rb" have been updated with the option of "HeatingType" as reflected in the Arguments list. </modeler_description>
+  <arguments>
+    <argument>
+      <name>ceilingReturnPlenumSpaceType</name>
+      <display_name>This space type should be part of a ceiling return air plenum.</display_name>
+      <type>Choice</type>
+      <required>false</required>
+      <model_dependent>false</model_dependent>
+    </argument>
+    <argument>
+      <name>heatingcoilType</name>
+      <display_name>Heating Type</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>ElectricResistance</default_value>
+      <choices>
+        <choice>
+          <value>GasBoiler</value>
+          <display_name>GasBoiler</display_name>
+        </choice>
+        <choice>
+          <value>ElectricResistance</value>
+          <display_name>ElectricResistance</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>remake_schedules</name>
+      <display_name>Apply recommended availability and ventilation schedules for air handlers?</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>true</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>dcvcheck</name>
+      <display_name>Use Demand Controlled Ventilation (DCV)?</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>true</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+  </arguments>
+  <provenances/>
+  <tags>
+    <tag>HVAC.Whole System</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <filename>OsLib_HelperMethods.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>15A9730B</checksum>
+    </file>
+    <file>
+      <filename>OsLib_Schedules.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>C53CDDCD</checksum>
+    </file>
+    <file>
+      <filename>OsLib_HVAC.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>01A616A1</checksum>
+    </file>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>1.3.0</identifier>
+        <min_compatible>1.3.0</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>1D63584C</checksum>
+    </file>
+    <file>
+      <filename>Test_BaseCase.osm</filename>
+      <filetype>osm</filetype>
+      <usage_type>test</usage_type>
+      <checksum>8E001041</checksum>
+    </file>
+    <file>
+      <filename>Test_SystemWithElectricHeatingCoil.osm</filename>
+      <filetype>osm</filetype>
+      <usage_type>test</usage_type>
+      <checksum>20D7B8CC</checksum>
+    </file>
+  </files>
+</measure>

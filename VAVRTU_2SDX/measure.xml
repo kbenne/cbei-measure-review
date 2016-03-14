@@ -1,0 +1,133 @@
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>vavrtu_2_sdx</name>
+  <uid>ffdf05ce-34c2-498e-9ca8-4ef8fe3a9af5</uid>
+  <version_id>1a22175a-99c7-4cce-924a-ec3d424c60a4</version_id>
+  <xml_checksum>4435983D</xml_checksum>
+  <class_name>VAVRTU_2SDX</class_name>
+  <display_name>Replace HVAC System with VAV RTU with 2-Stage DX Cooling, Hot Water or Electric Heating/Reheat, and ERV</display_name>
+  <description>Measure replaces existing HVAC system (if any) with a multizone variable air volume (VAV) HVAC system (one system per floor). The multizone VAV system is applied to all spaces in the air loops. Cooling is provided by a two-stage direct expansion (DX) system. Heating can be supplied by a gas fired boiler or electric resistance heaters. The building system can be simulated with or without plenums. HVAC schedules can be applied from the original model or adopted from built-in modules which reflect the HVAC recommendations of the 50% Small and Medium Office from AEDG. Demand controlled ventilation (DCV) is optional for outdoor air control. This VAV RTU system may lead to cost effective energy savings when used for classrooms together with CAV RTU system for other areas in school buildings in climate zone 2A (e.g., Houston) with electric heating and reheat for the VAV system and climate zone 5A (e.g., Boston) with hot water heating and reheat for the VAV system. </description>
+  <modeler_description>Airloops are dedicated to the multizone VAV cooling system which consists of variable speed fan, hot water or electric resistance heating coil, and two-stage DX cooling coil. For heating with hot water, a gas fired boiler is created in the plant loop. For each conditioned zone in the air loops, a single duct VAV box is applied with hot water or electric reheat. An ERV is applied between exhaust and outdoor air. This measure was based on the measure of ‘AEDG Office HVAC VAV with DX Cooling’ developed by NREL and posted online in the Building Component Library of NREL, https://bcl.nrel.gov/node/39808. The Ruby codes of ‘measure.rb’ and ‘OsLib_HVAC.rb’ have been updated with the options used in this study. </modeler_description>
+  <arguments>
+    <argument>
+      <name>ceilingReturnPlenumSpaceType</name>
+      <display_name>This space type should be part of a ceiling return air plenum.</display_name>
+      <type>Choice</type>
+      <required>false</required>
+      <model_dependent>false</model_dependent>
+    </argument>
+    <argument>
+      <name>heatingcoilType</name>
+      <display_name>Heating Type</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>GasBoiler</default_value>
+      <choices>
+        <choice>
+          <value>GasBoiler</value>
+          <display_name>GasBoiler</display_name>
+        </choice>
+        <choice>
+          <value>ElectricResistance</value>
+          <display_name>ElectricResistance</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>remake_schedules</name>
+      <display_name>Apply recommended availability and ventilation schedules for air handlers?</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>true</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>dcvcheck</name>
+      <display_name>Use Demand Controlled Ventilation (DCV)?</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>true</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+  </arguments>
+  <provenances/>
+  <tags>
+    <tag>HVAC.Whole System</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <filename>OsLib_HelperMethods.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>15A9730B</checksum>
+    </file>
+    <file>
+      <filename>OsLib_Schedules.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>C53CDDCD</checksum>
+    </file>
+    <file>
+      <filename>OsLib_HVAC.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>01A616A1</checksum>
+    </file>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>1.3.0</identifier>
+        <min_compatible>1.3.0</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>F7296407</checksum>
+    </file>
+    <file>
+      <filename>Test_VAVRTU2SDX.osm</filename>
+      <filetype>osm</filetype>
+      <usage_type>test</usage_type>
+      <checksum>E905D827</checksum>
+    </file>
+    <file>
+      <filename>Test_BaseCase.osm</filename>
+      <filetype>osm</filetype>
+      <usage_type>test</usage_type>
+      <checksum>0872CBBD</checksum>
+    </file>
+  </files>
+</measure>
